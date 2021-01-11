@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'mixins';
+@import 'components/menu.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+[x-cloak] {
+  display: none;
+}
+
+#wpadminbar {
+  display: none !important;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+p {
+  @apply my-6
+}
+
+.under {
+  position: relative;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    height: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    z-index: -1;  
+  }
+}
+
+.homePageHero {
+  height: 600px;
+
+  @media only screen and (min-width: 1024px) {
+    height: 750px;
+  }
+
+  .under {
+    &:after {
+      background: var(--theme-secondary);
+    }
+  }
+}
+
+.getstarted {
+  background-color: #1D2545;
+
+  .under {
+    &:after {
+      background: var(--theme-tertiary);
+    }
+  }
+}
+
+.contact-hero {
+  height: 270px;
+
+  @media only screen and (min-width: 1024px) {
+    height: 400px;
+  }
+
+  &__color {
+    background-color: #1D2545;
+  }
+}
+
+.contact {
+  .under {
+    &:after {
+      background: var(--theme-tertiary);
+    }
+  }
+}
