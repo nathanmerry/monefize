@@ -4,6 +4,8 @@
   @include('modules.header')
 @endsection
 
+{{ dump(get_defined_vars()) }}
+
 @section('body')
   <main class="flex-1">
     <div class="contact relative">
@@ -15,8 +17,8 @@
               <div class="w-full lg:w-5/12 lg:pr-4 font-header">
                 <div class="contact-hero">
                   <div class="flex flex-col justify-center h-full">
-                    <div class="text-lg lg:text-xl font-bold text-white text-opacity-50 mb-4 tracking-widest">CONTACT US</div>
-                    <div class="text-5xl lg:text-7xl font-semibold">We’re Always <span class="under">Happy</span> To Talk.</div>
+                    <div class="text-lg lg:text-xl font-bold text-white text-opacity-50 mb-4 tracking-widest">{{ $post['title'] }}</div>
+                    <div class="text-5xl lg:text-7xl font-semibold">{{ $contact['hero_text'] }}</div>
                   </div>
                 </div>
               <div class="hidden lg:block py-16 font-body text-black">
@@ -51,7 +53,7 @@
             </div>
             <div class="w-full lg:w-7/12 pt-10 lg:pt-16 lg:pl-6">
               <div class="relative">
-                @include('components.contactForm')
+                @include('components.contactForm', ['title' => $contact['form_title'], 'description' => $contact['form_description']])
               </div>
               <div class="lg:hidden py-12 font-body text-black">
                 <div class="flex mb-12">

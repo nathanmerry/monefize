@@ -7,7 +7,11 @@
 class Contact extends Monefize\Controller\Base {
     public $template = "contact";
 
-    use \Monefize\Controller\Modular;
+    public function getContactAttribute() {
+        $fields = get_field('contact');        
+        
+        return $fields;
+    }
 }
 
 new Contact;

@@ -1,6 +1,6 @@
 <div x-data="ContactForm()" class="bg-white px-6 lg:px-12 py-6 lg:py-14 rounded-xl shadow-lg">
-  <div class="mb-5 text-primary text-2xl font-bold font-header tracking-widest">CONTACT FORM</div>
-  <div class="mb-5 text-dark text-lg">Questions, queries, or just want to drop us a message and say hello? Below you can find all the details you need to contact the right person on our team.</div>
+  <div class="mb-5 text-primary text-2xl font-bold font-header tracking-widest">{{ $title }}</div>
+  <div class="mb-5 text-dark text-lg">{{ $description }}</div>
   <form class="text-dark">
     <div class="grid grid-cols-2 gap-x-2 mb-5">
       <div class="flex flex-col lg:mr-3">
