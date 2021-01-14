@@ -5,7 +5,8 @@ trait Modular {
 	public function getModulesAttribute()
     {
 		$data = [];
-		$modules = get_field(strtolower(get_called_class()) . '_modules');
+		$modules = property_exists($this, 'modules') ? $this->modules : strtolower(get_called_class()) . '_modules';
+		$modules = get_field($modules);
 		
 		if ($modules) {
 

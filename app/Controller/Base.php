@@ -10,6 +10,7 @@ class Base
 {
 	use Menu;
 	use Theme;
+	use Post;
 
 	function __construct()
 	{

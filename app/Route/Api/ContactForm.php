@@ -16,23 +16,26 @@ class ContactForm extends \WP_REST_Controller
         register_rest_route(
 			$this->namespace,
 			'/contact/',
-			['methods' => 'POST', 'callback' => [$this, 'emailForm']]
+			['methods' => 'GET', 'callback' => [$this, 'emailForm']]
 		);
     }
 
     public function emailForm(\WP_REST_Request $request)
     {
-        $fields = $request->get_param("fields");
+        $body = $request->get_params();
 
-        $mail = wp_mail(
-            'nathanmerry9713@gmail.com',
-            'hello',
-            wpautop('hello'),
-            ['Content-Type: text/html; charset=UTF-8']
-        );
+        $headers = [
+            "From: {$body['firstName']} {$body['lastName']} <{$body['email']}>", 
+            "Phone Number: {$body['phone']}", 
+            "Company: {$body['phone']}", 
+        ];
 
-        return $mail;
+        $mail = wp_mail( 'nathanmerry9713@gmail.com', 'Contact Form', 'hello', $headers );
 
-        // return [$fields, $sent];
+        if ($mail) {
+            return ['ok' => true];
+        } else {
+            return ['ok' => false];
+        }
     }
 }

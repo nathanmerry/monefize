@@ -21,6 +21,42 @@
     <label for="message" class="block mb-3">Message</label>
     <textarea x-model="fields.message" class="w-full h-32 mb-5 p-2 rounded-sm border border-gray-300 resize-none"></textarea>
 
-    <button class="px-6 py-3 bg-green-400 text-white rounded text-lg font-semibold" x-on:click="onClickSubmitForm(event)">SEND MESSAGE</button>
+    <div class="flex">
+      <button 
+        :disabled="loading" 
+        class="flex items-center justify-center h-12 w-40 flex-shrink-0 mr-4 bg-green-400 text-white rounded text-lg font-semibold" 
+        x-on:click="onClickSubmitForm(event)"
+      >
+        <div x-cloak x-show="loading" class="lds-dual-ring"></div>
+        <span x-show="!loading">SEND MESSAGE</span>
+      </button>
+      <div class="" x-text="responseMessage"></div>
+    </div>
   </form>
 </div>
+
+<style>
+  .lds-dual-ring {
+  display: block;
+  height: 100%;
+  padding: 5px 0;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

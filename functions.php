@@ -20,4 +20,8 @@ function add_file_types_to_uploads($file_types)
 }
 add_filter('upload_mimes', 'add_file_types_to_uploads');
 
-
+function getPageName()
+{    // If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object
+    $post = $wp_query->get_queried_object();
+    $pagename = $post->post_name;
+}

@@ -8,9 +8,9 @@
           </svg>
           <img src="{{ $theme['logo'] }}" alt="" class="max-h-full max-w-logo">
         </a>
-        <button id="navToggle" class="lg:hidden">
-          @include('svgs.hamburger', ['class' => 'w-5 h-5'])
-        </button>
+        <div id="hamburger" class="lg:hidden hamburger">
+          <div id="hamburger--line" class="hamburger--line"></div>
+        </div>          
       </div>
       <nav id="nav-primary" class="flex items-center lg:h-full">
         @include('modules.menu', ['nav' => $menu['primary']])
@@ -18,3 +18,7 @@
     </div>
   </div>
 </header>
+
+<style>
+
+</style>
